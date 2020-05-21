@@ -1,18 +1,15 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
+  <div>
+    <h1>NotFound</h1>
   </div>
 </template>
-
 <script>
 export default {
-  name: "App",
+  name: "NotFound",
   data() {
     return {};
   }
 };
 </script>
-
 <style lang="scss">
-@import "./style/common.scss";
 </style>

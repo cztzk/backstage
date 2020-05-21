@@ -1,0 +1,127 @@
+$mainColor: #bb2322;
+$color1: #503734;
+
+@mixin round($radius) {
+    border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+}
+
+@mixin scale($num) {
+    transform: scale($num);
+    -webkit-transform: scale($num);
+    -o-transform: scale($num);
+    -ms-transform: scale($num);
+    -moz-transform: scale($num);
+}
+
+@mixin scaleX($num) {
+    transform: scaleX($num);
+    -webkit-transform: scale($num);
+    -o-transform: scaleX($num);
+    -ms-transform: scaleX($num);
+    -moz-transform: scaleX($num);
+}
+
+@mixin scaleY($num) {
+    transform: scaleY($num);
+    -webkit-transform: scaleY($num);
+    -o-transform: scaleY($num);
+    -ms-transform: scaleY($num);
+    -moz-transform: scaleY($num);
+}
+
+@mixin translateY($Y: -50%) {
+    transform: translateY($Y);
+    -webkit-transform: translateY($Y);
+    -moz-transform: translateY($Y);
+    -ms-transform: translateY($Y);
+    -o-transform: translateY($Y);
+}
+
+@mixin translateX($X: -50%) {
+    transform: translateX($X);
+    -webkit-transform: translateX($X);
+    -moz-transform: translateX($X);
+    -ms-transform: translateX($X);
+    -o-transform: translateX($X);
+}
+
+@mixin translate($X: -50%, $Y: -50%) {
+    transform: translate($X, $Y);
+    -webkit-transform: translate($X, $Y);
+    -moz-transform: translate($X, $Y);
+    -ms-transform: translate($X, $Y);
+    -o-transform: translate($X, $Y);
+}
+
+@mixin backgroundNoRepeat($url) {
+    background: url($url) no-repeat center center;
+}
+
+@mixin backgroundSize($sizeX: 100%, $sizeY: 100%) {
+    -webkit-background-size: $sizeX $sizeY;
+    -moz-background-size: $sizeX $sizeY;
+    -ms-background-size: $sizeX $sizeY;
+    -o-background-size: $sizeX $sizeY;
+    background-size: $sizeX $sizeY;
+}
+
+@mixin backgroundUrl($url) {
+    background: url($url) no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    -ms-background-size: 100% 100%;
+    -webkit-background-size: 100% 100%;
+}
+
+@mixin backgroundcover($size: cover) {
+    -webkit-background-size: $size;
+    -moz-background-size: $size;
+    -ms-background-size: $size;
+    -o-background-size: $size;
+    background-size: $size;
+}
+
+@mixin transition($prop: transform, $time: 0.5s, $ease: linear) {
+    -webkit-transition: $prop $time $ease;
+    -moz-transition: $prop $time $ease;
+    -o-transition: $prop $time $ease;
+    -ms-transition: $prop $time $ease;
+    transition: $prop $time $ease;
+}
+
+@mixin origin($x: 50%, $y: 50%) {
+    transform-origin: $x $y;
+    -webkit-transform-origin: $x $y;
+    -moz-transform-origin: $x $y;
+    -o-transform-origin: $x $y;
+    -ms-transform-origin: $x $y;
+}
+
+@mixin animation($name, $time1, $time2, $mode) {
+    animation: $name $time1 $time2 $mode;
+    -o-animation: $name $time1 $time2 $mode;
+    -ms-animation: $name $time1 $time2 $mode;
+    -moz-animation: $name $time1 $time2 $mode;
+    -webkit-animation: $name $time1 $time2 $mode;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
