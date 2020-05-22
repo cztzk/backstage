@@ -121,19 +121,23 @@ export default {
     },
     // 验证手机号码是否正确
     phonecheck(val) {
-      var reg = /^1[3578]\d{9}$/gi;
+      let reg = /^1[3578]\d{9}$/gi;
       return reg.test(val);
     },
     // 验证邮箱号码是否正确
     postalcheck(val) {
       console.log(val);
-      var reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+      let reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
       return reg.test(val);
     }
   },
   mounted() {
     let _this = this;
-    _this.Utils.isLogin(_this,()=>{}, () => _this.$router.push({ path: "/index" }));
+    _this.Utils.isLogin(
+      _this,
+      () => {},
+      () => _this.$router.push({ path: "/index" })
+    );
   },
   created() {
     this.getBanner();

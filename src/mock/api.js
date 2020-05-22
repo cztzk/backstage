@@ -1,5 +1,5 @@
 import Mock from 'mockjs';
-var Random = Mock.Random
+let Random = Mock.Random
 
 Mock.mock('api/user/login', {
     "code": 0,
@@ -47,7 +47,7 @@ function getDate(optionss, leng) {
         data: [],
         msg: "",
     }
-    for (var i = 0; i < leng; i++) {
+    for (let i = 0; i < leng; i++) {
         dataArr.data.push(optionss);
     }
     return dataArr

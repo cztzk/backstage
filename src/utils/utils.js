@@ -1,5 +1,5 @@
 // 接口管理
-var config = {
+let config = {
     getBanner: "banner/list",//banner图 测试
     login: "user/login"
 }

@@ -19,6 +19,14 @@ export default new Router({
           path: '/index',
           component: () => import('@/pages/index.vue'),
           name: '主页'
+        }, {
+          path: '/form',
+          component: () => import('@/pages/form.vue'),
+          name: '表单'
+        }, {
+          path: '/table/:id',
+          component: () => import('@/pages/table.vue'),
+          name: '列表'
         },
       ]
     },
