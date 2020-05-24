@@ -213,4 +213,9 @@ export default {
     padding: 30px 20px;
   }
 }
+@media screen and (max-width: 1200px) {
+  .echarts_box .el-col-12 {
+    width: 100%;
+  }
+}
 </style>

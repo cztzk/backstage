@@ -58,14 +58,14 @@ export default {
           type: "banner"
         },
         res => console.log(res),
-        err => console.log(err)
+        err => _this.$message.error(err.data.msg ? err.data.msg : err)
       );
     },
     // 登录事件
     login() {
       let _this = this;
       let form = _this.form;
-      if (form.name == "") {
+      if (form.name.trim("") == "") {
         _this.$message.error("请输入用户名称");
         return;
       }
@@ -83,18 +83,18 @@ export default {
           _this.storage.setItem("user", "user", res);
           _this.$router.push({ path: "/index" });
         },
-        err => _this.$message.error(err.data.msg)
+        err => _this.$message.error(err.data.msg ? err.data.msg : err)
       );
     },
     // 注册事件
     register() {
       let _this = this;
       let form = _this.form;
-      if (form.name == "") {
+      if (form.name.trim("") == "") {
         _this.$message.error("请输入用户名称");
         return;
       }
-      if (form.pass.length < 6 || form.pass == "") {
+      if (form.pass.length < 6 || form.pas.trim("") == "") {
         _this.$message.error("请输入大于六位数的用户密码");
         return;
       }
@@ -102,11 +102,11 @@ export default {
         _this.$message.error("请检查两次密码是否不相同");
         return;
       }
-      if (form.tel == "" || !_this.phonecheck(form.tel)) {
+      if (form.tel.trim("") == "" || !_this.phonecheck(form.tel)) {
         _this.$message.error("手机格式错误，请重试");
         return;
       }
-      if (form.email == "" || !_this.postalcheck(form.email)) {
+      if (form.email.trim("") == "" || !_this.postalcheck(form.email)) {
         _this.$message.error("邮箱错误，请重试");
         return;
       }

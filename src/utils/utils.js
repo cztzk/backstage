@@ -1,7 +1,8 @@
 // 接口管理
 let config = {
     getBanner: "banner/list",//banner图 测试
-    login: "user/login"
+    login: "user/login",
+    getTabelList: "table/list"
 }
 
 /*

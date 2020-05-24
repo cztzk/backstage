@@ -4,20 +4,23 @@
     <div class="main_container el-col-24">
       <home-aside></home-aside>
       <div class="home_container">
+        <breadcrumb></breadcrumb>
         <router-view></router-view>
       </div>
     </div>
   </div>
 </template>
 <script>
-import HomeHeader from "./../components/HomeHeader.vue";
-import HomeAside from "./../components/HomeAside.vue";
+import HomeHeader from "@/components/HomeHeader.vue";
+import HomeAside from "@/components/HomeAside.vue";
+import breadcrumb from "@/components/breadcrumb.vue";
 
 export default {
   name: "home",
   components: {
     HomeHeader,
-    HomeAside
+    HomeAside,
+    breadcrumb
   },
   data() {
     return {

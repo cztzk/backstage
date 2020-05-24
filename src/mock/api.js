@@ -16,25 +16,43 @@ Mock.mock('api/user/login', {
 });
 
 
-Mock.mock('api/news/newsList', getDate({
+Mock.mock('api/tables/list', getDate({
     "id|10001-11000": 0,
-    "name": Random.ctitle(),
-    "dec": Random.csentence(),
+    "name": Random.cname(),
+    "addr": Random.county(true),
     "date": Random.date('yyyy-MM-dd'),
-    "img": Random.dataImage('230x173')
+    'age|18-60': 1,
+    "birth": Random.date(),
+    "sex|0-1": 0
 }, 5));
 
-Mock.mock('news/newsDetail', {
-    "code": 0,
-    "data": {
-        "name": Random.ctitle(),
-        "dec": Random.csentence(),
-        "date": Random.date('yyyy-MM-dd'),
-        "img": Random.dataImage('230x173'),
-        "cont": '@cparagraph()'
-    }
-});
+Mock.mock('api/table/list', getDateList());
 
+// 生成列表数据
+function getDateList() {
+    let dataList = {
+        code: 0,
+        data: {
+            list: new Array,
+            total: Random.integer(100, 200)
+        },
+        msg: ""
+    };
+    for (let i = 0; i < 10; i++) {
+        dataList.data.list.push(
+            Mock.mock({
+                "id|10001-11000": 0,
+                "name": Random.cname(),
+                "addr": Random.county(true),
+                "date": Random.date('yyyy-MM-dd'),
+                'age|18-60': 1,
+                "birth": Random.date(),
+                "sex|0-1": 0
+            })
+        )
+    }
+    return dataList;
+}
 
 /*
 生成对应数据事件

@@ -1,8 +1,17 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import home from "@/pages/home.vue";
+
+// vue-router跳转相同路径报错
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location, onResolve, onReject) {
+  if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
+  return originalPush.call(this, location).catch(err => err)
+}
+
 Vue.use(Router)
 
+// parameter 是否带有参数
 export default new Router({
   routes: [
     {
@@ -13,20 +22,42 @@ export default new Router({
     {
       path: '/',
       component: home,
-      name: '首页',
+      redirect: {
+        name: 'Index'
+      },
+      meta: {
+        title: "首页",
+        parameter: false
+      },
       children: [
         {
           path: '/index',
           component: () => import('@/pages/index.vue'),
-          name: '主页'
+          name: 'Index',
         }, {
-          path: '/form',
-          component: () => import('@/pages/form.vue'),
-          name: '表单'
+          path: '/forms',
+          component: () => import('@/pages/forms.vue'),
+          name: 'forms',
+          meta: {
+            title: "表单",
+            parameter: false
+          },
         }, {
-          path: '/table/:id',
-          component: () => import('@/pages/table.vue'),
-          name: '列表'
+          path: '/tables/:id',
+          component: () => import('@/pages/tables.vue'),
+          name: 'tables',
+          meta: {
+            parameter: true,
+            titles: [
+              {
+                id: 1,
+                title: "列表1"
+              }, {
+                id: 2,
+                title: "列表2"
+              }
+            ]
+          },
         },
       ]
     },

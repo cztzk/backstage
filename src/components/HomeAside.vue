@@ -2,7 +2,13 @@
   <aside>
     <el-row class="tac">
       <el-col>
-        <el-menu :default-active="$route.path" @open="handleOpen" @close="handleClose">
+        <el-menu
+          :default-active="$route.path"
+          @open="handleOpen"
+          @close="handleClose"
+          router
+          unique-opened
+        >
           <el-menu-item index="/index">
             <i class="el-icon-s-home"></i>
             <span slot="title">首页</span>
@@ -13,9 +19,9 @@
               <span>消息</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1">列表1</el-menu-item>
-              <el-menu-item index="1-2">列表2</el-menu-item>
-              <el-menu-item index="1-3">表单</el-menu-item>
+              <el-menu-item index="/tables/1">列表1</el-menu-item>
+              <el-menu-item index="/tables/2">列表2</el-menu-item>
+              <el-menu-item index="/forms">表单</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
 
@@ -76,5 +82,9 @@ aside {
   flex: 0 0 230px;
   width: 230px;
   overflow-y: scroll;
+}
+.is-active .el-submenu__title i,
+.is-active .el-submenu__title span {
+  color: #20a0ff;
 }
 </style>
