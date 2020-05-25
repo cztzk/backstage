@@ -148,11 +148,12 @@ export default {
 .login_box {
   width: 100vw;
   height: 100vh;
+  background: url("./../assets/images/common/login_bg.jpg") no-repeat;
+  background-size: cover;
   form {
     width: 350px;
     padding: 25px 35px 25px;
-    background: #fff;
-    border: 1px solid #eaeaea;
+    background: hsla(0, 0%, 100%, 0.6);
     box-shadow: 0 0 25px #cac6c6;
   }
   h1 {

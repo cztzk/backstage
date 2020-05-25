@@ -27,7 +27,7 @@
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button @click.native="dialogFormVisible = false">取消</el-button>
+      <el-button @click.native="closeDialog">取消</el-button>
       <el-button type="primary" @click.native="addSubmit" :loading="dialogLoading">提交</el-button>
     </div>
   </el-dialog>
@@ -50,18 +50,13 @@ export default {
     dialogType: {
       type: Number,
       default: 1
+    },
+    dialogForm: {
+      type: [Array, Object]
     }
   },
   data() {
     return {
-      // 表单
-      dialogForm: {
-        name: "",
-        sex: 1,
-        age: 0,
-        birth: "",
-        addr: ""
-      },
       dialogFormRules: {
         name: [{ required: true, message: "请输入姓名", trigger: "blur" }]
       }
@@ -70,8 +65,11 @@ export default {
   methods: {
     // 提交事件
     addSubmit() {
-      console.log(1241);
-      this.$emit("addSubmit", this.dialogForm);
+      this.$emit("addSubmit");
+    },
+    // 关闭事件
+    closeDialog() {
+      this.$emit("closeDialog");
     }
   },
   mounted() {}

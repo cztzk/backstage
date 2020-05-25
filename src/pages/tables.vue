@@ -1,6 +1,11 @@
 <template>
   <div>
-    <table-header @tableSearch="tableSearch" :sels="sels" @allDelete="allDelete"></table-header>
+    <table-header
+      @tableSearch="tableSearch"
+      :sels="sels"
+      @allDelete="allDelete"
+      @handleAdd="handleAdd"
+    ></table-header>
     <el-table
       :data="users"
       highlight-current-row
@@ -23,9 +28,11 @@
       </el-table-column>
     </el-table>
     <table-dialog
+      :dialogForm="dialogForm"
       :dialogType="dialogType"
       :dialogFormVisible="dialogFormVisible"
       :dialogLoading="dialogLoading"
+      @closeDialog="closeDialog"
       @addSubmit="addSubmit"
     ></table-dialog>
     <table-footer :paseSize="paseSize" :total="total" @handleCurrentChange="handleCurrentChange"></table-footer>
@@ -44,6 +51,7 @@ export default {
   },
   data() {
     return {
+      tableId: 0,
       users: [],
       listLoading: false, //是否正在加载中
       total: 0,
@@ -53,7 +61,15 @@ export default {
       sels: [], //被选中列表
       dialogFormVisible: false, //弹出框是否显示
       dialogType: 1, // 弹出框样式  1新增 2编辑
-      dialogLoading: false //弹出框正在提交中
+      dialogLoading: false, //弹出框正在提交中
+      // 表单
+      dialogForm: {
+        name: "",
+        sex: 1,
+        age: 0,
+        birth: "",
+        addr: ""
+      }
     };
   },
   methods: {
@@ -64,14 +80,6 @@ export default {
     //性别显示转换
     formatSex: function(row) {
       return row.sex == 1 ? "男" : row.sex == 0 ? "女" : "未知";
-    }, //显示编辑界面
-    handleEdit: function(index, row) {
-      this.editFormVisible = true;
-      this.editForm = Object.assign({}, row);
-    },
-    //显示新增界面
-    handleAdd: function() {
-      this.dialogFormVisible = true;
     },
     // 修改页码
     handleCurrentChange(val) {
@@ -86,7 +94,7 @@ export default {
         _this,
         _this.Utils.config.getTabelList,
         {
-          type: _this.$route.params.id,
+          type: _this.tableId,
           search: _this.search
         },
         function(res) {
@@ -156,19 +164,23 @@ export default {
         })
         .catch(() => {});
     },
+    closeDialog() {
+      this.dialogFormVisible = false;
+    },
+    //打开新增界面
+    handleAdd: function() {
+      this.dialogFormVisible = true;
+    },
+    //打开编辑界面
+    handleEdit: function(index, row) {
+      this.dialogFormVisible = true;
+      this.dialogType = 2;
+      this.dialogForm = row;
+    },
     // 弹出框提交事件
-    addSubmit(dialogForm) {
-      if (this.dialogType == 2) {
-        this.editUser(dialogForm);
-      } else {
-        this.addUser(dialogForm);
-      }
-    },
-    editUser(form) {
-      console.log(form);
-    },
-    addUser(form) {
+    addSubmit() {
       let _this = this;
+      let form = _this.dialogForm;
       if (form.name.trim("") == "") {
         _this.$message.error("请输入用户名称");
         return;
@@ -184,17 +196,31 @@ export default {
       _this.dialogLoading = true;
       setTimeout(() => {
         _this.$message({
-          message: "新增成功",
+          message: this.dialogType == 2 ? "编辑成功" : "新增成功",
           type: "success"
         });
+        console.log(form);
         _this.getUsers();
         _this.dialogLoading = false;
         _this.dialogFormVisible = false;
       }, 2000);
     }
   },
+  watch: {
+    // 监听route.params.id改变时，修改对应内容
+    $route(to) {
+      if (to.name === "tables") {
+        let tableId = this.$route.params.id;
+        console.log(tableId);
+        this.getUsers(tableId);
+      }
+    }
+  },
   mounted() {
     this.getUsers();
+  },
+  created() {
+    this.tableId = this.$route.params.id;
   }
 };
 </script>
