@@ -106,8 +106,12 @@ export default {
 </script>
 <style lang="scss">
 .form_box {
-  max-width: 600px;
-  margin: 0 auto;
+  background: #fff;
+  padding: 40px 0;
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
 }
 .line {
   text-align: center;

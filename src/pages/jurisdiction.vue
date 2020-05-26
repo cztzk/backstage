@@ -1,12 +1,12 @@
 <template>
-  <div class="notfound_box flex_center">
+  <div class="jurisdiction_box flex_center">
     <div>
       <h1>
         <span>4</span>
         <span>0</span>
-        <span>4</span>
+        <span>3</span>
       </h1>
-      <p>啊哦~ 你所访问的页面不存在</p>
+      <p>啊哦~ 你没有权限访问该页面哦</p>
       <el-row class="flex_center">
         <el-button type="primary" round @click="returnHome">返回主页</el-button>
         <el-button type="primary" round @click="backHistory">返回上一页</el-button>
@@ -16,7 +16,7 @@
 </template>
 <script>
 export default {
-  name: "NotFound",
+  name: "jurisdiction",
   data() {
     return {};
   },
@@ -30,14 +30,13 @@ export default {
   }
 };
 </script>
-
 <style lang="scss" >
-.notfound_box {
+.jurisdiction_box {
   text-align: center;
   h1 {
     font-weight: bold;
     font-size: 250px;
-    color: #2d8cf0;
+    color: #f02d2d;
     span:nth-child(2n) {
       color: #00a854;
     }

@@ -148,7 +148,7 @@ export default {
 .login_box {
   width: 100vw;
   height: 100vh;
-  background: url("./../assets/images/common/login_bg.jpg") no-repeat;
+  background: url("~@/assets/images/common/login_bg.jpg") no-repeat;
   background-size: cover;
   form {
     width: 350px;

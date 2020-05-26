@@ -28,14 +28,13 @@ export default {
     };
   },
   mounted() {
-    let _this = this;
-    _this.Utils.isLogin(
-      _this,
-      () => _this.$router.push({ path: "/login" }),
-      user => (_this.user = user)
-    );
+    this.getUser();
   },
-  methods: {}
+  methods: {
+    getUser() {
+      this.user = this.storage.getItem("user", "user", "user");
+    }
+  }
 };
 </script>
 <style lang="scss">
@@ -50,5 +49,6 @@ export default {
   flex: 1;
   overflow-y: scroll;
   padding: 20px;
+  background: #f0f0f0;
 }
 </style>

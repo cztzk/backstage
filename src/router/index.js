@@ -9,9 +9,11 @@ Router.prototype.push = function push(location, onResolve, onReject) {
   return originalPush.call(this, location).catch(err => err)
 }
 
+
 Vue.use(Router)
 
 // parameter 是否带有参数
+// jurisdiction 是否需要权限跳转
 export default new Router({
   routes: [
     {
@@ -34,6 +36,10 @@ export default new Router({
           path: '/index',
           component: () => import('@/pages/index.vue'),
           name: 'Index',
+          meta: {
+            title: "首页",
+            parameter: false
+          },
         }, {
           path: '/forms',
           component: () => import('@/pages/forms.vue'),
@@ -59,13 +65,37 @@ export default new Router({
             ]
           },
         },
+        {
+          path: '/404',
+          name: 'notfound',
+          component: () => import('@/pages/notfound.vue'),
+          meta: {
+            title: "404",
+            parameter: false
+          },
+        },
+        {
+          path: '/jurisdictions',
+          name: 'jurisdictions',
+          component: () => import('@/pages/jurisdictions.vue'),
+          meta: {
+            title: "权限测试",
+            parameter: false,
+          },
+        },
+        {
+          path: '/403',
+          name: 'jurisdiction',
+          component: () => import('@/pages/jurisdiction.vue'),
+          meta: {
+            title: "403",
+            parameter: false,
+            jurisdiction: true
+          },
+        },
       ]
     },
-    {
-      path: '/404',
-      name: 'notfound',
-      component: () => import('@/pages/notfound.vue'),
-    },
+
     {
       path: '*',
       redirect: "/404"

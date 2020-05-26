@@ -2,7 +2,8 @@
 let config = {
     getBanner: "banner/list",//banner图 测试
     login: "user/login",
-    getTabelList: "table/list"
+    getTabelList: "table/list",
+    getMsgList: "user/msglist",
 }
 
 /*
@@ -54,7 +55,7 @@ success 已登录后执行的事件
 function isLogin(_this, failes, successes) {
     let user = _this.storage.getItem("user", "user", "user");
     if (!user) {
-        failes && failes(user);
+        failes != {} && failes(user);
     } else {
         successes(user);
     }

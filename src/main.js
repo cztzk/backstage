@@ -42,6 +42,31 @@ Vue.prototype.Utils = utils;
 import storage from "@/storage/index.js";
 Vue.prototype.storage = storage;
 
+//使用钩子函数对路由进行权限跳转
+router.beforeEach((to, from, next) => {
+  document.title = `${to.meta.title} | backstage`;
+  // 判断是否已登录
+  let role = window.sessionStorage.getItem('user');
+  if (!role && to.path !== '/login') {
+    next('/login');
+  } else if (to.meta.jurisdiction) {
+    // 如果是管理员权限则可进入，这里只是简单的模拟管理员权限而已
+    //grade 等级 0游客 1用户 2超级管理员
+    console.log(role);
+    role.grade === '2' ? next() : next('/403');
+  } else {
+    // 简单的判断IE10及以下不进入富文本编辑器，该组件不兼容
+    if (navigator.userAgent.indexOf('MSIE') > -1 && to.path === '/editor') {
+      Vue.prototype.$alert('vue-quill-editor组件不兼容IE10及以下浏览器，请使用更高版本的浏览器查看', '浏览器不兼容通知', {
+        confirmButtonText: '确定'
+      });
+    } else {
+      next();
+    }
+  }
+});
+
+
 new Vue({
   router,
   store,

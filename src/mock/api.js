@@ -11,19 +11,19 @@ Mock.mock('api/user/login', {
         "role": 0,
         "createTime": 1479048325000,
         "updateTime": 1479048325000,
+        "date": Random.date('yyyy-MM-dd'),
+        "addr": Random.county(true),
+        "grade|0-2": 0
+        //grade 等级 0游客 1用户 2超级管理员
     },
     msg: "",
 });
 
 
-Mock.mock('api/tables/list', getDate({
+Mock.mock('api/user/msglist', getDate({
     "id|10001-11000": 0,
-    "name": Random.cname(),
-    "addr": Random.county(true),
-    "date": Random.date('yyyy-MM-dd'),
-    'age|18-60': 1,
-    "birth": Random.date(),
-    "sex|0-1": 0
+    "title": Random.title(),
+    "status": Random.boolean(),
 }, 5));
 
 Mock.mock('api/table/list', getDateList());

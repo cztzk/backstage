@@ -15,13 +15,23 @@
           </el-menu-item>
           <el-submenu index="1">
             <template slot="title">
-              <i class="el-icon-message"></i>
+              <i class="el-icon-message-solid"></i>
               <span>消息</span>
             </template>
             <el-menu-item-group>
               <el-menu-item index="/tables/1">列表1</el-menu-item>
               <el-menu-item index="/tables/2">列表2</el-menu-item>
               <el-menu-item index="/forms">表单</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
+          <el-submenu index="2">
+            <template slot="title">
+              <i class="el-icon-warning"></i>
+              <span>错误处理</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="/404">404页面</el-menu-item>
+              <el-menu-item index="/jurisdictions">权限测试</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
 
@@ -81,7 +91,7 @@ export default {
 aside {
   flex: 0 0 230px;
   width: 230px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .is-active .el-submenu__title i,
 .is-active .el-submenu__title span {
