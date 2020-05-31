@@ -7,7 +7,7 @@
             <img src="~@/assets/images/common/user.jpg" alt />
             <div>
               <h2 class="ellipsis">{{user.username}}</h2>
-              <h4 class="ellipsis">{{user.grade==0?"游客":(user.grade==0?"用户":"超级管理员")}}</h4>
+              <h4 class="ellipsis">{{user.grade==0?"游客":(user.grade==1?"用户":"超级管理员")}}</h4>
             </div>
           </div>
           <h5>上次登录时间：{{user.date}}</h5>
@@ -136,7 +136,6 @@ export default {
           type: "msg"
         },
         res => {
-          console.log(res);
           _this.msgList = res;
         },
         err => _this.$message.error(err.data.msg ? err.data.msg : err)
@@ -377,10 +376,11 @@ export default {
 }
 .index_user {
   background: #fff;
-  padding: 20px 15px;
+  padding: 15px 15px;
   margin-bottom: 10px;
   h5 {
     color: #999;
+    line-height: 24px;
   }
 }
 .user_name {

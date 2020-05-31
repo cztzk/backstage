@@ -17,11 +17,9 @@ function axiosGet(_this, url, success, fail) {
     _this.axios
         .get(process.env.VUE_APP_API_URL ? process.env.VUE_APP_API_URL + url : url)
         .then(function (res) {
-            // console.log(res);
             success(res);
         })
         .catch(function (err) {
-            // console.log(err);
             fail(err);
         });
 }
@@ -37,11 +35,9 @@ fail 失败事件
 function axiosPost(_this, url, data, success, fail) {
     _this.axios.post(process.env.VUE_APP_API_URL ? process.env.VUE_APP_API_URL + url : url, data)
         .then(function (res) {
-            // console.log(res);
             success(res);
         })
         .catch(function (err) {
-            // console.log(err);
             fail(err);
         });
 }

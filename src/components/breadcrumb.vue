@@ -4,8 +4,8 @@
       <el-breadcrumb-item
         v-for="(item,i) in crumbsList"
         :key="i"
-        :to="item.meta.parameter?{ name: item.name, params: { id: $route.params.id}}:'/'+item.name"
-      >{{item.meta.title}}</el-breadcrumb-item>
+        :to="item.parameter?{ name: item.name, params: { id: $route.params.id}}:(item.name?'/'+item.name:'/')"
+      >{{item.meta.title?item.meta.title:'首页'}}</el-breadcrumb-item>
     </el-breadcrumb>
   </div>
 </template>
@@ -30,10 +30,11 @@ export default {
       let matched = this.$route.matched;
       let _this = this;
       //如果是首页
+
       if (this.isHome(matched)) {
         matched = [{ path: "/index", meta: { title: "首页" }, name: "index" }];
       } else {
-        // 判断是否带有参数
+        // 判断是否带有参数;
         matched.map(
           item =>
             (item.meta.title = item.meta.parameter
@@ -43,6 +44,7 @@ export default {
               : item.meta.title)
         );
       }
+      console.log(matched);
       this.crumbsList = matched;
     }
   },

@@ -46,14 +46,13 @@ Vue.prototype.storage = storage;
 router.beforeEach((to, from, next) => {
   document.title = `${to.meta.title} | backstage`;
   // 判断是否已登录
-  let role = window.sessionStorage.getItem('user');
+  let role = JSON.parse(window.sessionStorage.getItem('user'));
   if (!role && to.path !== '/login') {
     next('/login');
   } else if (to.meta.jurisdiction) {
     // 如果是管理员权限则可进入，这里只是简单的模拟管理员权限而已
     //grade 等级 0游客 1用户 2超级管理员
-    console.log(role);
-    role.grade === '2' ? next() : next('/403');
+    role.user.grade == 2 ? next() : next('/403');
   } else {
     // 简单的判断IE10及以下不进入富文本编辑器，该组件不兼容
     if (navigator.userAgent.indexOf('MSIE') > -1 && to.path === '/editor') {

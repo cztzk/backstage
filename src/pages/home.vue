@@ -1,7 +1,7 @@
 <template>
   <div>
     <home-header :userArr="user"></home-header>
-    <div class="main_container el-col-24">
+    <div class="main_container el-col-24" :class="collapses?'content-collapse':'content-show'">
       <home-aside></home-aside>
       <div class="home_container">
         <breadcrumb></breadcrumb>
@@ -24,8 +24,19 @@ export default {
   },
   data() {
     return {
-      user: new Array()
+      user: new Array(),
+      collapses: true
     };
+  },
+  computed: {
+    collapsesChange() {
+      return this.$store.state.collapses;
+    }
+  },
+  watch: {
+    collapsesChange(val) {
+      this.collapses = val;
+    }
   },
   mounted() {
     this.getUser();
@@ -46,9 +57,21 @@ export default {
   overflow: hidden;
 }
 .home_container {
+  position: absolute;
+  left: 64px;
+  top: 0;
+  bottom: 0;
+  right: 0;
   flex: 1;
   overflow-y: scroll;
   padding: 20px;
   background: #f0f0f0;
+  transition: left 0.5s linear;
+}
+
+.content-collapse {
+  .home_container {
+    left: 230px;
+  }
 }
 </style>

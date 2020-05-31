@@ -13,7 +13,7 @@ Mock.mock('api/user/login', {
         "updateTime": 1479048325000,
         "date": Random.date('yyyy-MM-dd'),
         "addr": Random.county(true),
-        "grade|0-2": 0
+        "grade": Random.integer(0, 2)
         //grade 等级 0游客 1用户 2超级管理员
     },
     msg: "",

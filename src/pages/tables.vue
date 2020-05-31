@@ -141,7 +141,6 @@ export default {
     },
     // 批量删除
     allDelete() {
-      console.log(this.sels);
       let _this = this;
       _this
         .$confirm("确认删除选中记录吗?", "提示", {
@@ -211,7 +210,6 @@ export default {
     $route(to) {
       if (to.name === "tables") {
         let tableId = this.$route.params.id;
-        console.log(tableId);
         this.getUsers(tableId);
       }
     }

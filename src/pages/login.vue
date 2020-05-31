@@ -38,8 +38,8 @@ export default {
     return {
       islogin: true, //判断是登录还是注册
       form: {
-        name: "",
-        pass: "",
+        name: "admin",
+        pass: "admin123",
         passes: "",
         email: "",
         tel: "",
@@ -126,7 +126,6 @@ export default {
     },
     // 验证邮箱号码是否正确
     postalcheck(val) {
-      console.log(val);
       let reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
       return reg.test(val);
     }

@@ -6,6 +6,7 @@ Vue.use(Vuex);
 
 const state = {
   user: '',//用户信息
+  collapses: true,//是否展开导航栏
 }
 export default new Vuex.Store({
   state,
