@@ -48,8 +48,8 @@ export default {
     return {
       fullscreen: false,
       name: "linxin",
-      message: 2,
-      collapses: false
+      collapses: true,
+      message: 2
     };
   },
   computed: {

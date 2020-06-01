@@ -77,8 +77,14 @@ export default new Router({
             }
           ]
         },
-      },
-      {
+      }]
+    },
+    {
+      path: '/',
+      component: home,
+      tips: "选项卡",
+      icons: "el-icon-document-copy",
+      children: [{
         path: '/msgTab',
         name: 'msgTab',
         component: () => import('@/pages/msgTab.vue'),

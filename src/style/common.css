@@ -110,6 +110,10 @@ a {
   text-decoration: none;
 }
 
+div {
+  font-size: 12px;
+}
+
 .opacity0 {
   opacity: 0;
 }

@@ -143,17 +143,17 @@ export default {
     },
     mesEdit(msg) {
       console.log(msg);
-      this.$prompt("请输入事项名称", "提示", {
+      this.$prompt("请输入待办事项", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         inputPattern: /\S/,
         inputValue: msg.title,
-        inputErrorMessage: "事项名称不能为空"
+        inputErrorMessage: "待办事项不能为空"
       })
         .then(({ value }) => {
           this.$message({
             type: "success",
-            message: "你的名称是: " + value
+            message: "你的待办事项是: " + value
           });
         })
         .catch(() => {

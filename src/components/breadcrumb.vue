@@ -44,7 +44,6 @@ export default {
               : item.meta.title)
         );
       }
-      console.log(matched);
       this.crumbsList = matched;
     }
   },
