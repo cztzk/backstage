@@ -133,7 +133,7 @@ header {
 }
 .header_logo {
   width: 230px;
-  @include transition(width, 0.5s, linear);
+  transition: width 0.5s linear;
   a {
     text-transform: uppercase;
     text-align: center;
@@ -142,7 +142,7 @@ header {
     border-right: 1px solid hsla(62, 77%, 76%, 0.3);
     display: block;
     letter-spacing: 2px;
-    @include transition(font-size, 0.5s, linear);
+  transition: font-size 0.5s linear;
   }
 }
 .collapses_logo {
@@ -165,7 +165,7 @@ header {
     width: 40px;
     height: 40px;
     overflow: hidden;
-    @include round(25px);
+    border-radius: 25px;
   }
   .el-dropdown {
     height: 60px;

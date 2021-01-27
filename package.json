@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "chromedriver": "^88.0.0",
     "core-js": "^3.6.4",
     "default-passive-events": "^1.0.10",
     "echarts": "^4.7.0",

@@ -390,8 +390,8 @@ export default {
   img {
     width: 80px;
     height: 80px;
-    @include round(50px);
-  }
+border-radius: 50px;
+}
   > div {
     max-width: 60%;
     margin-left: 15px;
