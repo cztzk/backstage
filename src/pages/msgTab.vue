@@ -16,7 +16,7 @@
           </el-table-column>
         </el-table>
         <div class="handle-row">
-          <el-button type="primary">全部标为已读</el-button>
+          <el-button type="primary" @click="readAll">全部标为已读</el-button>
         </div>
       </el-tab-pane>
       <el-tab-pane :label="`已读消息(${read.length})`" name="second">
@@ -35,7 +35,7 @@
             </el-table-column>
           </el-table>
           <div class="handle-row">
-            <el-button type="danger">删除全部</el-button>
+            <el-button type="danger" @click="deleteAll">删除全部</el-button>
           </div>
         </template>
       </el-tab-pane>
@@ -55,7 +55,7 @@
             </el-table-column>
           </el-table>
           <div class="handle-row">
-            <el-button type="danger" @click="deleteAll">清空回收站</el-button>
+            <el-button type="danger" @click="recycleAll">清空回收站</el-button>
           </div>
         </template>
       </el-tab-pane>
@@ -107,7 +107,19 @@ export default {
       const item = this.recycle.splice(index, 1);
       this.read = item.concat(this.read);
     },
+    readAll(){
+      let unread=this.unread;
+      let read=this.read.concat(unread);
+      this.read =read;
+      this.unread = [];
+    },
     deleteAll() {
+      let read=this.read;
+      let recycle=this.recycle.concat(read);
+      this.recycle =recycle;
+      this.read = [];
+    },
+   recycleAll() {
       this.recycle = [];
     }
   },
